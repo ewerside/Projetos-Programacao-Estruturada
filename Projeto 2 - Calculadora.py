@@ -1,41 +1,41 @@
-calculadora = 0
+calculo = 0
+estado_inicial = True
 
 while True:
-    print('''
-    Calculadora
-    ===============================
-    [+] Soma
-    [-] Subtração
-    [*] Multiplicação
-    [/] Divisão
-    ===============================
-    [x] Limpar calculadora
-    [ENTER] Encerra o programa
-    ===============================
-    ''')
-
-    escolha = input('Digite o sinal da operação que você quer usar: ').lower()
-
-    if escolha == '':
-        break
-
-    if escolha == 'x':
-        calculadora = 0
-        continue
-
-    if calculadora == 0:
-        num1 = input('Informe o primeiro valor: ')
+    print(calculo)
+    if estado_inicial:
+        num1 = input('Informe o primeiro valor ou aperte ENTER para sair: ')
 
         if num1 == '':
             print('Processo finalizado.')
             break
 
         numero1 = float(num1)
-
+        estado_inicial = False
     else:
-        numero1 = calculadora
+        numero1 = calculo
 
-    num2 = input('Informe o segundo valor: ')
+    operacao = input("Digite a operação desejada:\n"
+                     "===============================\n"
+                     "[+] Soma\n"
+                     "[-] Subtração\n"
+                     "[*] Multiplicação\n"
+                     "[/] Divisão\n"
+                     "===============================\n"
+                     "[ENTER] Encerra o programa\n"
+                     "[*] Multiplicação\n"
+                     "===============================\n").lower()
+
+    if operacao == '':
+        print('Processo finalizado.')
+        break
+
+    if operacao == 'x':
+        calculo = 0
+        estado_inicial = True
+        continue
+
+    num2 = input('Informe o segundo valor ou aperte ENTER para sair: ')
 
     if num2 == '':
         print('Processo finalizado.')
@@ -43,20 +43,14 @@ while True:
 
     numero2 = float(num2)
 
-    if escolha == '+':
-        calculadora = numero1 + numero2
-        print(f'O resultado foi: {calculadora}')
-    elif escolha == '-':
-        calculadora = numero1 - numero2
-        print(f'O resultado foi: {calculadora}')
-    elif escolha == '*':
-        calculadora = numero1 * numero2
-        print(f'O resultado foi: {calculadora}')
-    elif escolha == '/':
-        if numero2 == 0:
-            print('Não é possível dividir por zero.')
-        else:
-            calculadora = numero1 / numero2
-            print(f'O resultado foi: {calculadora}')
+    if operacao == '+':
+        calculo = numero1 + numero2
+    elif operacao == '-':
+        calculo = numero1 - numero2
+    elif operacao == '*':
+        calculo = numero1 * numero2
     else:
-        print('Algo foi digitado de forma errada. Digite novamente!')
+        # O else acaba tratando da operação de divisão. Como o problema pede
+        # para considerar que os valores digitados sempre são válidos, também
+        # não tratamos da divisão por zero.
+        calculo = numero1 / numero2
