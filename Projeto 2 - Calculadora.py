@@ -4,16 +4,16 @@ estado_inicial = True
 while True:
     print(calculo)
     if estado_inicial:
-        num1 = input('Informe o primeiro valor ou aperte ENTER para sair: ')
+        primeiro_valor = input('Informe o primeiro valor ou aperte ENTER para sair: ')
 
-        if num1 == '':
+        if primeiro_valor == '':
             print('Processo finalizado.')
             break
 
-        numero1 = float(num1)
+        primeiro_numero = float(primeiro_valor)
         estado_inicial = False
     else:
-        numero1 = calculo
+        primeiro_numero = calculo
 
     operacao = input("Digite a operação desejada:\n"
                      "===============================\n"
@@ -35,22 +35,22 @@ while True:
         estado_inicial = True
         continue
 
-    num2 = input('Informe o segundo valor ou aperte ENTER para sair: ')
+    segundo_valor = input('Informe o segundo valor ou aperte ENTER para sair: ')
 
-    if num2 == '':
+    if segundo_valor == '':
         print('Processo finalizado.')
         break
 
-    numero2 = float(num2)
+    segundo_numero = float(segundo_valor)
 
     if operacao == '+':
-        calculo = numero1 + numero2
+        calculo = primeiro_numero + segundo_numero
     elif operacao == '-':
-        calculo = numero1 - numero2
+        calculo = primeiro_numero - segundo_numero
     elif operacao == '*':
-        calculo = numero1 * numero2
+        calculo = primeiro_numero * segundo_numero
     else:
         # O else acaba tratando da operação de divisão. Como o problema pede
-        # para considerar que os valores digitados sempre são válidos, também
+        # para considerar que os valores digitados sempre serão válidos, também
         # não tratamos da divisão por zero.
-        calculo = numero1 / numero2
+        calculo = primeiro_numero / segundo_numero
