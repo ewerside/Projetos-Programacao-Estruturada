@@ -2,8 +2,8 @@ from random import randint
 
 def numero_valido(x):
     if x.isnumeric():
-        num_lados = int(x)
-        if num_lados > 0:
+        valor_numerico = int(x)
+        if valor_numerico > 0:
             return True
     return False
 
